@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "429948577574",
+    "project_id": "socarsampletask",
+    "storage_bucket": "socarsampletask.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:429948577574:android:e1a6a8c1ce6b0c3800c3e7",
+        "android_client_info": {
+          "package_name": "com.socarsampletask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "429948577574-dh83phus8iigpcc9nlmdapakf1cgj201.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.socarsampletask",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "429948577574-ql4iv96o0n71cbr2hfgufie51vdhvsns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKDCx4y9wMMAG6UzC_YN4_dknAxP_MLok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "429948577574-ql4iv96o0n71cbr2hfgufie51vdhvsns.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
