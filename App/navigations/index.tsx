@@ -27,7 +27,7 @@ const BottomStack = () => (
     <Tab.Navigator initialRouteName='Home'
         shifting={false}>
         <Tab.Screen name={'Home'} component={Home} />
-        <Tab.Screen name={'Cars'} component={CarsStack} />
+        <Tab.Screen name={'Car'} component={CarsStack} />
         <Tab.Screen name={'Profile'} component={Profile} />
         <Tab.Screen name={'Settings'} component={Settings} />
     </Tab.Navigator>
