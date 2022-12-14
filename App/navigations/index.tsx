@@ -8,6 +8,8 @@ import Home from '../src/home'
 import Profile from '../src/profile'
 import Settings from '../src/settings'
 import Splash from '../src/splash'
+import AddCars from '../src/profile/addCar'
+import CarDetails from '../src/cars/carDetails'
 
 
 
@@ -20,15 +22,25 @@ const CarsStack = () => (
             headerShown: false
         }}>
         <Stack.Screen name={'Cars'} component={Cars} />
+        <Stack.Screen name={'CarDetails'} component={CarDetails} />
     </Stack.Navigator>
 );
 
+const ProfileStack = () => (
+    <Stack.Navigator initialRouteName={'ProfilePage'}
+        screenOptions={{
+            headerShown: false
+        }}>
+        <Stack.Screen name={'ProfilePage'} component={Profile} />
+        <Stack.Screen name={'AddCars'} component={AddCars} />
+    </Stack.Navigator>
+);
 const BottomStack = () => (
     <Tab.Navigator initialRouteName='Home'
         shifting={false}>
         <Tab.Screen name={'Home'} component={Home} />
         <Tab.Screen name={'Car'} component={CarsStack} />
-        <Tab.Screen name={'Profile'} component={Profile} />
+        <Tab.Screen name={'Profile'} component={ProfileStack} />
         <Tab.Screen name={'Settings'} component={Settings} />
     </Tab.Navigator>
 )

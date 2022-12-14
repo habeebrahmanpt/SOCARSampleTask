@@ -1,14 +1,17 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {
+    View,
+    Text,
+    FlatList,
+    Image,
+    TouchableOpacity,
+} from 'react-native';
+import { carsRef } from '../../storage';
 import { ApplicationStyle as styles } from '../../Style/ApplicationStyle';
-import { databaseRef, carsRef } from '../../storage/index';
-import { useState } from 'react';
 import { formateValue } from '../utils/Utils';
+import database from '@react-native-firebase/database';
 
-export default function Cars(props): JSX.Element {
-
-
+export default function MyBooking(props): JSX.Element {
     const [carList, setCarList] = useState([])
 
     useEffect(() => {
@@ -22,17 +25,18 @@ export default function Cars(props): JSX.Element {
         // Stop listening for updates when no longer required
         return () => carsRef.off('value', onValueChange);
     }, []);
-    const buttonClickedHandler = (car :any) => {
-        console.log('You have been clicked a button!');
-        // do something
-        props.navigation.navigate('CarDetails',car);
-      };
+    const cancel = (carDetails) => {
+        database().ref('/socar_test/cars/' + carDetails.id).update({
+            booked: false,
+            bookedUser: null,
+            bookedName: null,
+        })
+    }
     const renderItem = (post) => {
         const item = post.item;
         return (
             <View style={styles.card}>
-                <Image style={styles.cardImage}
-                    source={{ uri: 'https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' }} />
+                <Image style={styles.cardImage} source={{ uri: 'https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' }} />
                 <View style={styles.cardHeader}>
                     <View>
                         <Text style={styles.title}>{item.company} {item.name}</Text>
@@ -41,10 +45,10 @@ export default function Cars(props): JSX.Element {
                     </View>
                 </View>
                 <View style={styles.cardFooter}>
-                    <TouchableOpacity style={styles.socialBarContainer} onPress={()=>{
-                        buttonClickedHandler(item)
+                    <TouchableOpacity style={styles.socialBarContainer} onPress={() => {
+                        cancel(item)
                     }}>
-                        <Text style={styles.button}>Book now</Text>
+                        <Text style={styles.button}>Cancel</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -65,7 +69,7 @@ export default function Cars(props): JSX.Element {
                 renderItem={renderItem} />
         </View>
     );
-}
 
+}
 
 
